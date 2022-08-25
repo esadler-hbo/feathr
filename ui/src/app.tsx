@@ -23,8 +23,6 @@ const queryClient = new QueryClient();
 const msalClient = getMsalConfig();
 const App = () => {
   return (
-    <MsalProvider instance={msalClient}>
-      <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <Layout style={{ minHeight: "100vh" }}>
@@ -56,8 +54,6 @@ const App = () => {
             </Layout>
           </BrowserRouter>
         </QueryClientProvider>
-      </MsalAuthenticationTemplate>
-    </MsalProvider>
   );
 };
 
