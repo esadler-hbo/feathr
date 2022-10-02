@@ -64,7 +64,7 @@ const SideMenu = () => {
         >
           <Link to="/monitoring">Monitoring</Link>
         </Menu.Item>
-        {showManagement === "true" && (
+        {showManagement === true && (
           <Menu.Item
             key="/management"
             icon={

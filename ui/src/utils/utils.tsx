@@ -1,4 +1,5 @@
 import { Configuration, PublicClientApplication } from "@azure/msal-browser";
+import { OktaAuth } from '@okta/okta-auth-js';
 
 export const getMsalConfig = () => {
   // Use runtime environment variables if found in env-config.js, otherwise fallback to
@@ -21,6 +22,25 @@ export const getMsalConfig = () => {
 
   return new PublicClientApplication(msalConfig);
 };
+
+
+export const getOktaConfig = () => {
+  const oktaIssuer = window.environment?.oktaIssuer ?? process.env.REACT_APP_OKTA_ISSUER;
+  const clientId = window.environment?.oktaClientId ?? process.env.REACT_APP_OKTA_CLIENT_ID;
+
+  console.log("clientId = ", clientId);
+  console.log("oktaIssuer = ", oktaIssuer);
+
+  const oktaConfig = new OktaAuth({
+    issuer: oktaIssuer,
+    clientId: clientId,
+    redirectUri: window.location.origin + '/login/callback'
+  });
+
+
+
+  return oktaConfig
+}
 
 export const enum FeatureType {
   AllNodes = "all_nodes",
