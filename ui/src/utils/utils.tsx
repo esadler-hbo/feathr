@@ -37,8 +37,6 @@ export const getOktaConfig = () => {
     redirectUri: window.location.origin + '/login/callback'
   });
 
-
-
   return oktaConfig
 }
 

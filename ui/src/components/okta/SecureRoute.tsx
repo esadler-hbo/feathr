@@ -18,7 +18,7 @@ import Loading from './Loading';
 
 export const RequiredAuth: React.FC = () => {
   const { oktaAuth, authState } = useOktaAuth();
-
+  console.log(authState)
   useEffect(() => {
 
     if (!authState) {
@@ -33,10 +33,6 @@ export const RequiredAuth: React.FC = () => {
 
     }
   }, [oktaAuth, !!authState, authState?.isAuthenticated]);
-
-  if (authState && !authState.idToken) {
-    return (<p>Okta configuration error</p>);
-  };
 
   if (!authState?.isAuthenticated) {
     return (<Loading />);
